@@ -1,7 +1,14 @@
 Rails.application.routes.draw do
-  get 'welcome/index'
+  scope ENV['RELATIVE_URL_ROOT'] || '' do
+    scope 'one' do
+      get 'welcome/index'
 
-  resources :articles
+      # Handles launches.
+      get 'launch', :to => 'articles#launch', as: :launch
 
-  root 'welcome#index'
+      resources :articles
+
+      root 'welcome#index'
+    end
+  end
 end
