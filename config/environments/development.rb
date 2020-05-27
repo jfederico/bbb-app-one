@@ -63,6 +63,6 @@ Rails.application.configure do
 
   config.hosts = nil
   config.web_console.whiny_requests = false
-  config.relative_url_root = "#{ENV['RELATIVE_URL_ROOT'] ? '/' + ENV['RELATIVE_URL_ROOT'] : '' }/one"
-  config.assets.prefix = "#{ENV['RELATIVE_URL_ROOT'] ? '/' + ENV['RELATIVE_URL_ROOT'] : ''}/one/assets"
+  config.relative_url_root = "#{ENV['RELATIVE_URL_ROOT'] ? '/' + ENV['RELATIVE_URL_ROOT'] : ''}/one"
+  config.assets.prefix = "#{config.relative_url_root}/assets"
 end

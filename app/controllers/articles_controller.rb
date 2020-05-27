@@ -17,10 +17,6 @@ class ArticlesController < ApplicationController
     redirect_to @article
   end
 
-  def launch
-    redirect_to articles_url
-  end
-
   private
   def article_params
     params.require(:article).permit(:title, :text)
