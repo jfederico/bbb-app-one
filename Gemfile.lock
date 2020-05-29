@@ -1,10 +1,11 @@
-PATH
-  remote: ../omniauth-bbbltibroker
+GIT
+  remote: https://github.com/jfederico/omniauth-bbbltibroker.git
+  revision: ebe7400deb2e3fcc7e9a16734b83e953cda010e4
   specs:
     omniauth-bbbltibroker (0.1.1)
 
 GEM
-  remote: https://rubygems.org/
+  remote: http://rubygems.org/
   specs:
     actioncable (6.0.3.1)
       actionpack (= 6.0.3.1)
@@ -247,9 +248,3 @@ DEPENDENCIES
   web-console (>= 3.3.0)
   webdrivers
   webpacker (~> 4.0)
-
-RUBY VERSION
-   ruby 2.7.1p83
-
-BUNDLED WITH
-   2.1.4

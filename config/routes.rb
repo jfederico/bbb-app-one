@@ -4,9 +4,10 @@ Rails.application.routes.draw do
       get 'welcome/index'
 
       # Handles launches.
-      get 'launch', :to => 'sessions#launch', as: :launch
+      get 'launch', :to => 'sessions#new', as: :launch
 
       # Handles Omniauth authentication.
+      get '/auth/:provider', to: 'sessions#new', as: :omniauth_authorize
       get '/auth/:provider/callback', to: 'sessions#create', as: :omniauth_callback
       get '/auth/failure', to: 'sessions#failure', as: :omniauth_failure
 

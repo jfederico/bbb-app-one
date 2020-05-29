@@ -1,4 +1,8 @@
 class ArticlesController < ApplicationController
+  include Authenticator
+
+  before_action :ensure_authenticated_session
+
   def index
     @articles = Article.all
   end
