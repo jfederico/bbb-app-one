@@ -22,6 +22,7 @@ jobs:
           name: Which bundler?
           command: bundle -v
       - ruby/bundle-install
+      - yarn install --check-files
 
       # Setup the database
       - run: bundle exec rake db:setup
