@@ -75,6 +75,19 @@ jobs:
           command: |
             sudo apt install -y libsqlite3-dev sqlite3 sqlite3-doc || true
 
+      # Wait for DB
+      - run: dockerize -wait tcp://localhost:5432 -timeout 1m
+
+      # Setup the environment
+      - run: cp dotenv .env
+
+      # Setup the database
+      - run: bundle exec rake db:setup
+
+      # Run the tests
+      - run: bundle exec rails test:db
+
+
 
 workflows:
   version: 2
