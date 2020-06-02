@@ -52,6 +52,11 @@ jobs:
           command: yarn install --cache-folder ~/.cache/yarn
           cache-key: "yarn.lock"
 
+      - run:
+          name: Other dependencies
+          command: |
+            apt install sqlite-libs sqlite-dev
+
 
 
 workflows:
