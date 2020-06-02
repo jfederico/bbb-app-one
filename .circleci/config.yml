@@ -13,7 +13,10 @@ jobs:
       # Bundle install dependencies
       - run:
           name: Which bundler?
-          command: bundle -v
+          command: |
+            bundle -v
+            gem install bundler
+
       - ruby/bundle-install
 
       - run:
