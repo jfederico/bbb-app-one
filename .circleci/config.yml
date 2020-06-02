@@ -10,17 +10,17 @@ jobs:
     steps:
       - checkout
 
-      - ruby/install-deps
+      # Bundle install dependencies
+      - run:
+          name: Which bundler?
+          command: bundle -v
+      - ruby/bundle-install
+
       # Store bundle cache
       - node/install-packages:
           pkg-manager: yarn
           cache-key: "yarn.lock"
 
-      # # Bundle install dependencies
-      # - run:
-      #     name: Which bundler?
-      #     command: bundle -v
-      # - ruby/bundle-install
 
   test:
     docker:
@@ -34,19 +34,17 @@ jobs:
     executor: ruby/default
     steps:
       - checkout
-      - ruby/install-deps
+
+      # Bundle install dependencies
+      - run:
+          name: Which bundler?
+          command: bundle -v
+      - ruby/bundle-install
+
       # Store bundle cache
       - node/install-packages:
           pkg-manager: yarn
           cache-key: "yarn.lock"
-
-      # - run:
-      #     name: Yarn Install
-      #     command: yarn install --cache-folder ~/.cache/yarn
-      #
-      # # Setup the database
-      # - run: bundle exec rake db:setup
-
 
 workflows:
   version: 2
