@@ -10,11 +10,6 @@ jobs:
     steps:
       - checkout
 
-      # Restore Cached Dependencies
-      - type: cache-restore
-        name: Restore bundle cache
-        key: bbb-app-one-{{ checksum "Gemfile.lock" }}
-
       # Bundle install dependencies
       - run:
           name: Which bundler?
