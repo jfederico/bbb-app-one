@@ -55,7 +55,7 @@ jobs:
       - run:
           name: Other dependencies
           command: |
-            sudo apt install -y sqlite-libs sqlite-dev || true
+            sudo apt install -y libsqlite3-dev sqlite3 sqlite3-doc || true
 
 
 workflows:
