@@ -16,11 +16,11 @@ jobs:
           command: bundle -v
       - ruby/bundle-install
 
-      # Store bundle cache
-      - node/install-packages:
-          pkg-manager: yarn
+      - run:
+          name: Yarn Install
+          command: yarn install --cache-folder ~/.cache/yarn
           cache-key: "yarn.lock"
-# 
+#
 #
 #   test:
 #     docker:
