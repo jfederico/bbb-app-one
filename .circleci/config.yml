@@ -9,7 +9,17 @@ jobs:
     executor: ruby/default
     steps:
       - checkout
+
+      # Restore Cached Dependencies
+      - type: cache-restore
+        name: Restore bundle cache
+        key: bbb-app-one-{{ checksum "Gemfile.lock" }}
+
+      # Bundle install dependencies
       - run:
           name: Which bundler?
           command: bundle -v
       - ruby/bundle-install
+
+      # Setup the database
+      - run: bundle exec rake db:setup
