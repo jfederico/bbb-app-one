@@ -10,6 +10,12 @@ jobs:
     steps:
       - checkout
 
+      # Restore bundle cache
+      - restore_cache:
+          keys:
+            - bbb-app-one-{{ checksum "Gemfile.lock" }}
+            - bbb-app-one-
+
       # Bundle install dependencies
       - run:
           name: Which bundler?
@@ -24,6 +30,12 @@ jobs:
           command: yarn install --cache-folder ~/.cache/yarn
           cache-key: "yarn.lock"
 
+      # Store bundle cache
+      - save_cache:
+          key: bbb-app-one-{{ checksum "Gemfile.lock" }}
+          paths:
+            - vendor/bundle
+
 
   test:
     docker:
@@ -37,6 +49,12 @@ jobs:
     executor: ruby/default
     steps:
       - checkout
+
+      # Restore bundle cache
+      - restore_cache:
+          keys:
+            - bbb-app-one-{{ checksum "Gemfile.lock" }}
+            - bbb-app-one-
 
       # Bundle install dependencies
       - run:
